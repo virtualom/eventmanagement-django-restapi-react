@@ -1,44 +1,97 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind CSS v4 — uses @import instead of @tailwind directives */
+@import "tailwindcss";
+
+/* Custom theme tokens for dark mode + indigo/violet palette */
+@theme {
+  --color-dark: #0f172a;
+  --color-dark-lighter: #1e293b;
+  --color-dark-lightest: #334155;
+  --color-primary: #6366f1;
+  --color-primary-dark: #4f46e5;
+  --color-accent: #8b5cf6;
+  --color-accent-dark: #7c3aed;
+}
 
 :root {
   color-scheme: dark;
 }
 
 body {
-  @apply bg-dark text-slate-200 min-h-screen font-sans antialiased;
+  background-color: var(--color-dark);
+  color: #e2e8f0;
+  min-height: 100vh;
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* ─── Reusable Component Classes ─── */
 .card {
-  @apply bg-dark-lighter border border-slate-800 rounded-xl overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5;
+  background-color: var(--color-dark-lighter);
+  border: 1px solid #1e293b;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.card:hover {
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.05);
 }
 
 .btn-primary {
-  @apply px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
+.btn-primary:hover { background-color: var(--color-primary-dark); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .btn-secondary {
-  @apply px-4 py-2 bg-dark-lightest hover:bg-slate-600 text-white rounded-lg font-medium transition-colors;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-dark-lightest);
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  border: none;
 }
+.btn-secondary:hover { background-color: #475569; }
 
 .input-field {
-  @apply w-full bg-dark border border-slate-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all text-white;
+  width: 100%;
+  background-color: var(--color-dark);
+  border: 1px solid #334155;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: white;
+  outline: none;
+  transition: all 0.2s;
+}
+.input-field:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
 }
 
 .badge {
-  @apply px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-dark;
-}
-
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-dark); }
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-800 rounded-full hover:bg-slate-700;
+  background: #1e293b;
+  border-radius: 9999px;
 }
+::-webkit-scrollbar-thumb:hover { background: #334155; }
