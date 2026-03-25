@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+.env
+venv/
+env/
+*.sqlite3
+staticfiles/
+
+# Migrations (optional — keep if you want to commit them)
+# */migrations/__pycache__/
